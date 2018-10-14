@@ -34,6 +34,9 @@
                                     <constraint firstAttribute="width" constant="32" id="DUw-Lr-Hmi"/>
                                 </constraints>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BW2-a5-vLw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Let-A9-OP1">
                                 <rect key="frame" x="16" y="606" width="70" height="30"/>
@@ -41,9 +44,12 @@
                                     <constraint firstAttribute="height" constant="30" id="Akp-qM-PIH"/>
                                 </constraints>
                                 <state key="normal" title="Poprzedni"/>
+                                <connections>
+                                    <action selector="previousButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7rv-Jf-oBk"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qiI-wF-DDK">
-                                <rect key="frame" x="166" y="84" width="36" height="21"/>
+                                <rect key="frame" x="166" y="84" width="36" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="0IF-Bn-7BP"/>
                                     <constraint firstAttribute="width" constant="36" id="NqC-r6-hbO"/>
@@ -52,13 +58,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fdb-ql-llA">
-                                <rect key="frame" x="50" y="125" width="269" height="169"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="169" id="Eyn-3Z-3Lg"/>
-                                    <constraint firstAttribute="width" constant="269" id="ZkA-Sz-iXk"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Weather Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rk6-vx-sdW">
                                 <rect key="frame" x="24" y="323" width="107" height="21"/>
                                 <constraints>
@@ -179,10 +178,30 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fdb-ql-llA">
+                                <rect key="frame" x="50" y="125" width="269" height="169"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="169" id="Eyn-3Z-3Lg"/>
+                                    <constraint firstAttribute="width" constant="269" id="ZkA-Sz-iXk"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="authorNameLabel" destination="HAr-49-Inj" id="d8w-f0-KEG"/>
+                        <outlet property="dateLabel" destination="qiI-wF-DDK" id="JXd-mE-NEX"/>
+                        <outlet property="maxTempTextField" destination="XMR-T8-Hme" id="EIs-sn-3kl"/>
+                        <outlet property="minTempTextField" destination="2J6-Ra-Zjd" id="syG-ex-VG2"/>
+                        <outlet property="nextButton" destination="2za-iW-vKS" id="GfN-YE-dcL"/>
+                        <outlet property="precipitationTextField" destination="L4a-7D-A8z" id="DE5-CH-Z2h"/>
+                        <outlet property="pressureTextField" destination="4dd-Vm-qWZ" id="gH2-p3-TzR"/>
+                        <outlet property="previousButton" destination="Let-A9-OP1" id="yLC-j5-RrN"/>
+                        <outlet property="weatherImageView" destination="Fdb-ql-llA" id="1gp-nv-BMV"/>
+                        <outlet property="weatherTypeTextField" destination="hat-0L-Adt" id="zlk-J7-H3t"/>
+                        <outlet property="windTextFIeld" destination="EuE-50-l5G" id="0Mq-e7-sVZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
