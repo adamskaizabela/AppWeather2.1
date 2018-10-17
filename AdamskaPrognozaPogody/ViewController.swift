@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     
     
+    
     let url: String = "https://www.metaweather.com/api/location/2487956/"
     
     
@@ -36,6 +37,8 @@ class ViewController: UIViewController {
     func loadJSON(){
         let urlObject: URL = URL.init(string: url)!
         
+        
+        
     }
     
     @IBAction func previousButtonClicked(_ sender: Any) {
@@ -44,6 +47,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
+        
+        
     }
     
     
