@@ -79,7 +79,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func previousButtonClicked(_ sender: Any) {
-        previousButton.isEnabled = true
+        
         if(dayNumber > 0){
             dayNumber = dayNumber - 1
         }
