@@ -27,6 +27,8 @@ class ViewController: UIViewController {
     
     var weatherData: [WeatherData] = []
     var dayNumber = 0
+    
+    
    
     
     override func viewDidLoad() {
@@ -62,15 +64,22 @@ class ViewController: UIViewController {
     
     
     func fetchImage() {
-        
-        
-        
+        let abbr = weatherData[dayNumber].abbr
+        let url = URL(string: "https://www.metaweather.com/static/img/weather/png/64/\(abbr).png")
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            DispatchQueue.main.async {
+                if let imageData = data {
+                    self.weatherImageView.image = UIImage(data: imageData)
+                }
+            }
+        }
     }
     
     
     
     @IBAction func previousButtonClicked(_ sender: Any) {
-        
+        previousButton.isEnabled = true
         if(dayNumber > 0){
             dayNumber = dayNumber - 1
         }
@@ -78,6 +87,8 @@ class ViewController: UIViewController {
         showWeather(weather: weatherData[dayNumber])
         if(dayNumber == 0){
             previousButton.isEnabled = false
+        }else{
+            previousButton.isEnabled = true
         }
         
         //let secondDay = weatherData[1]
@@ -95,6 +106,8 @@ class ViewController: UIViewController {
         
         if(dayNumber == 4){
             nextButton.isEnabled = false
+        }else{
+            nextButton.isEnabled = true
         }
     }
     
