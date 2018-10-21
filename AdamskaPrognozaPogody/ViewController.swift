@@ -17,38 +17,85 @@ class ViewController: UIViewController {
     @IBOutlet weak var weatherTypeTextField: UITextField!
     @IBOutlet weak var minTempTextField: UITextField!
     @IBOutlet weak var maxTempTextField: UITextField!
-    @IBOutlet weak var windTextFIeld: UITextField!
     @IBOutlet weak var precipitationTextField: UITextField!
     @IBOutlet weak var pressureTextField: UITextField!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var windDirectionTextField: UITextField!
+    @IBOutlet weak var windSpeedTextField: UITextField!
     
     
-    
-    let url: String = "https://www.metaweather.com/api/location/2487956/"
-    
+    var weatherData: [WeatherData] = []
+    var dayNumber = 0
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib
+        fetchWeather()
     }
     
     
-    func loadJSON(){
-        let urlObject: URL = URL.init(string: url)!
+    func fetchWeather() {
+        DownloadService.fetchWeather { (response) in
+            guard let responseData = response else {return}
+            self.weatherData = responseData
+            
+            DispatchQueue.main.async {
+                if(!self.weatherData.isEmpty){
+                    self.showWeather(weather: self.weatherData[self.dayNumber])
+                }
+            }
+        }
+    }
+    
+    
+    func showWeather(weather: WeatherData) {
+        dateLabel.text = weather.date
+        weatherTypeTextField.text = weather.type
+        minTempTextField.text = weather.tempMin.description
+        maxTempTextField.text = weather.tempMax.description
+        windDirectionTextField.text = weather.windDirection
+        windSpeedTextField.text = weather.windSpeed.description
+        pressureTextField.text = weather.airPressure.description
+    }
+    
+    
+    
+    func fetchImage() {
         
         
         
     }
+    
+    
     
     @IBAction func previousButtonClicked(_ sender: Any) {
         
+        if(dayNumber > 0){
+            dayNumber = dayNumber - 1
+        }
+        
+        showWeather(weather: weatherData[dayNumber])
+        if(dayNumber == 0){
+            previousButton.isEnabled = false
+        }
+        
+        //let secondDay = weatherData[1]
+        //showWeather(weather: secondDay)
+        //zmienna lokalna do przetrzymywania numeru dnia
     }
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         
+        if(dayNumber < 4){
+            dayNumber = dayNumber + 1
+        }
+        showWeather(weather: weatherData[dayNumber])
         
+        if(dayNumber == 4){
+            nextButton.isEnabled = false
+        }
     }
     
     

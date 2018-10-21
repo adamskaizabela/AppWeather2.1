@@ -17,10 +17,12 @@ class WeatherData: NSObject {
     var windDirection: String = ""
     var windSpeed: Double = 0.0
     var airPressure: Double = 0.0
-
+    var precipitation: String = "" //opady
+    var abbr: String = ""
+    
     
     init(date: String, type: String, tempMax: Double, tempMin: Double, windDirection: String,
-         windSpeed: Double, airPressure: Double){
+         windSpeed: Double, airPressure: Double, abbr: String){
         self.date = date
         self.type = type
         self.tempMax = tempMax
@@ -28,5 +30,7 @@ class WeatherData: NSObject {
         self.windDirection = windDirection
         self.windSpeed = windSpeed
         self.airPressure = airPressure
+        //self.precipitation = precipitation
+        self.abbr = abbr
     }
 }

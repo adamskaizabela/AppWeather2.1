@@ -36,8 +36,10 @@ class DownloadService {
                             let windDirection = weather["wind_direction_compass"] as! String
                             let windSpeed = weather["wind_speed"] as! Double
                             let airPressure = weather["air_pressure"] as! Double
-                            
-                            response.append(WeatherData(date: date, type: type, tempMax: tempMax, tempMin: tempMin, windDirection: windDirection, windSpeed: windSpeed, airPressure: airPressure))
+                            //let precipitation = weather[] as! String
+                            let abbr = weather["weather_state_abbr"] as! String
+                        
+                            response.append(WeatherData(date: date, type: type, tempMax: tempMax, tempMin: tempMin, windDirection: windDirection, windSpeed: windSpeed, airPressure: airPressure, abbr: abbr))
                         }
                     }
                     
