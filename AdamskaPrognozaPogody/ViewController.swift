@@ -1,4 +1,4 @@
-//
+
 //  ViewController.swift
 //  AdamskaPrognozaPogody
 //
@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     //MARK: Properties
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     var dayNumber = 0
     
     
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,13 +51,21 @@ class ViewController: UIViewController {
     
     
     func showWeather(weather: WeatherData) {
-        dateLabel.text = weather.date
+        dateLabel.text = "London \(weather.date)"
         weatherTypeTextField.text = weather.type
-        minTempTextField.text = weather.tempMin.description
-        maxTempTextField.text = weather.tempMax.description
+        minTempTextField.text = String(format: "%.3f", weather.tempMin)
+        maxTempTextField.text = String(format: "%.3f", weather.tempMax)
         windDirectionTextField.text = weather.windDirection
-        windSpeedTextField.text = weather.windSpeed.description
-        pressureTextField.text = weather.airPressure.description
+        windSpeedTextField.text = String(format: "%.3f", weather.windSpeed)
+        pressureTextField.text = String(format: "%.3f", weather.airPressure)
+        
+        if(weather.type=="Heavy Cloud" || weather.type == "Light Cloud" || weather.type == "Clear"){
+            precipitationTextField.text = "No"
+        }else{
+            precipitationTextField.text = "Yes"
+        }
+        
+        fetchImage()
     }
     
     
@@ -79,7 +86,6 @@ class ViewController: UIViewController {
     
     
     @IBAction func previousButtonClicked(_ sender: Any) {
-        
         if(dayNumber > 0){
             dayNumber = dayNumber - 1
         }
@@ -87,18 +93,13 @@ class ViewController: UIViewController {
         showWeather(weather: weatherData[dayNumber])
         if(dayNumber == 0){
             previousButton.isEnabled = false
-        }else{
-            previousButton.isEnabled = true
         }
         
-        //let secondDay = weatherData[1]
-        //showWeather(weather: secondDay)
-        //zmienna lokalna do przetrzymywania numeru dnia
+        nextButton.isEnabled = true
     }
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        
         if(dayNumber < 4){
             dayNumber = dayNumber + 1
         }
@@ -106,11 +107,10 @@ class ViewController: UIViewController {
         
         if(dayNumber == 4){
             nextButton.isEnabled = false
-        }else{
-            nextButton.isEnabled = true
         }
+        
+        previousButton.isEnabled = true
     }
     
     
 }
-

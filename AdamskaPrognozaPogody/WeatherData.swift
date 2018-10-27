@@ -17,7 +17,7 @@ class WeatherData: NSObject {
     var windDirection: String = ""
     var windSpeed: Double = 0.0
     var airPressure: Double = 0.0
-    var precipitation: String = "" //opady
+    //var precipitation: String = "" //opady
     var abbr: String = ""
     
     
