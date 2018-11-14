@@ -13,6 +13,7 @@
 		2B60136421949E8A002A2580 /* CustomSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B60136321949E8A002A2580 /* CustomSplitViewController.swift */; };
 		2B60136621949FC5002A2580 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B60136521949FC5002A2580 /* DetailViewController.swift */; };
 		2B6013682194A090002A2580 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6013672194A090002A2580 /* SearchViewController.swift */; };
+		2BF68C80219C31E800CF1C10 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF68C7F219C31E800CF1C10 /* MapViewController.swift */; };
 		3F11FE3B216E31120003C8A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F11FE3A216E31120003C8A4 /* AppDelegate.swift */; };
 		3F11FE3D216E31120003C8A4 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F11FE3C216E31120003C8A4 /* MasterViewController.swift */; };
 		3F11FE40216E31120003C8A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F11FE3E216E31120003C8A4 /* Main.storyboard */; settings = {ASSET_TAGS = (label, ); }; };
@@ -46,6 +47,7 @@
 		2B60136321949E8A002A2580 /* CustomSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSplitViewController.swift; sourceTree = "<group>"; };
 		2B60136521949FC5002A2580 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2B6013672194A090002A2580 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		2BF68C7F219C31E800CF1C10 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3F11FE37216E31120003C8A4 /* AdamskaPrognozaPogody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdamskaPrognozaPogody.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F11FE3A216E31120003C8A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F11FE3C216E31120003C8A4 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				3F11FE3C216E31120003C8A4 /* MasterViewController.swift */,
 				2B60136521949FC5002A2580 /* DetailViewController.swift */,
 				2B6013672194A090002A2580 /* SearchViewController.swift */,
+				2BF68C7F219C31E800CF1C10 /* MapViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				3F11FE3B216E31120003C8A4 /* AppDelegate.swift in Sources */,
 				2B6013682194A090002A2580 /* SearchViewController.swift in Sources */,
 				2B60136221949E35002A2580 /* CityTableViewCell.swift in Sources */,
+				2BF68C80219C31E800CF1C10 /* MapViewController.swift in Sources */,
 				2B409509217CA3F0001F822C /* WeatherData.swift in Sources */,
 				2B60136421949E8A002A2580 /* CustomSplitViewController.swift in Sources */,
 				2B409507217CA1E1001F822C /* DownloadService.swift in Sources */,

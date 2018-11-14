@@ -24,6 +24,7 @@ class DownloadService {
                     
                     let title = responseData["title"] as! String
                     let woeid = responseData["woeid"] as! Int
+                    let latt_long = responseData["latt_long"] as! String
                     
                     if let weatherData = responseData["consolidated_weather"] as? [Dictionary<String, Any>] {
                         
@@ -43,7 +44,7 @@ class DownloadService {
                         }
                     }
                     
-                    handler(WeatherData(title: title, woeid: woeid, days: days))
+                    handler(WeatherData(title: title, woeid: woeid, latt_long: latt_long, days: days))
                     
                 }  catch let error as NSError {
                     print(error.localizedDescription)
@@ -73,8 +74,9 @@ class DownloadService {
                     for dict in responseData {
                         let title = dict["title"] as! String
                         let woeid = dict["woeid"] as! Int
+                        let latt_long = dict["latt_long"] as! String
                         
-                        searchResult.append(WeatherData(title: title, woeid: woeid, days: [DayDetails]()))
+                        searchResult.append(WeatherData(title: title, woeid: woeid, latt_long: latt_long, days: [DayDetails]()))
                     }
                     
                     handler(searchResult)
@@ -89,4 +91,40 @@ class DownloadService {
         
         task.resume()
     }
+    
+    class func searchWithLocation(latitude: Double, longitude: Double, handler: @escaping (_ response: [WeatherData]?) -> Void) {
+        let url = URL(string: "https://www.metaweather.com/api/location/search/?lattlong=\(latitude),\(longitude)")
+        
+        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            
+            if let data = data {
+                do {
+                    // Convert the data to JSON
+                    let jsonSerialized = try JSONSerialization.jsonObject(with: data, options: []) as? [Dictionary<String, Any>]
+                    
+                    guard let responseData = jsonSerialized else {return}
+                    
+                    var searchResult: [WeatherData] = []
+                    
+                    for dict in responseData {
+                        let title = dict["title"] as! String
+                        let woeid = dict["woeid"] as! Int
+                        let latt_long = dict["latt_long"] as! String
+                        
+                        searchResult.append(WeatherData(title: title, woeid: woeid, latt_long: latt_long, days: [DayDetails]()))
+                    }
+                    
+                    handler(searchResult)
+                    
+                }  catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        task.resume()
+    }
+    
 }

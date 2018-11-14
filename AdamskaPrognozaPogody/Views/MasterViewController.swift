@@ -7,6 +7,8 @@
 //
 import UIKit
 
+import UIKit
+
 class MasterViewController: UITableViewController, SearchDelegate {
     
     var locationIDs = [44418, 13963, 14979]
@@ -84,14 +86,14 @@ class MasterViewController: UITableViewController, SearchDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "detailViewController", sender: nil)
+        performSegue(withIdentifier: "DetailViewController", sender: nil)
     }
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if(segue.identifier == "detailViewController") {
+        if(segue.identifier == "DetailViewController") {
             let vc = segue.destination as! DetailViewController
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
             let data = weatherData[indexPath.row]

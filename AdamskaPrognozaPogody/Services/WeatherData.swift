@@ -11,11 +11,13 @@ import Foundation
 class WeatherData: NSObject {
     var title: String = ""
     var woeid: Int = 0
+    var latt_long: String = ""
     var days: [DayDetails] = []
     
-    init(title: String, woeid: Int, days: [DayDetails]) {
+    init(title: String, woeid: Int, latt_long: String, days: [DayDetails]) {
         self.title = title
         self.woeid = woeid
+        self.latt_long = latt_long
         self.days = days
     }
     
@@ -47,3 +49,4 @@ class DayDetails: NSObject {
         self.abbr = abbr
     }
 }
+

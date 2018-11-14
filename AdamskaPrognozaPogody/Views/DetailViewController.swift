@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class DetailViewController: UIViewController {
     
@@ -22,8 +23,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var windDirectionTextField: UITextField!
     @IBOutlet weak var windSpeedTextField: UITextField!
-    
-    
     
     var weatherData: WeatherData?
     var dayNumber = 0
@@ -61,7 +60,6 @@ class DetailViewController: UIViewController {
     }
     
     
-    
     func fetchImage() {
         guard let data = weatherData else {return}
         let abbr = data.days[dayNumber].abbr
@@ -72,6 +70,28 @@ class DetailViewController: UIViewController {
                 if let imageData = data {
                     self.weatherImageView.image = UIImage(data: imageData)
                 }
+            }
+        }
+    }
+    
+    
+    @IBAction func mapButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "MapViewController", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "MapViewController") {
+            let vc = segue.destination as! MapViewController
+            guard let data = weatherData else {return}
+            let latt_long = data.latt_long
+            
+            var coordinatesArray = latt_long.components(separatedBy: ",").map { (value) -> Double? in
+                return Double(value)
+            }
+            
+            if let latt = coordinatesArray[0], let long = coordinatesArray[1] {
+                vc.location = CLLocationCoordinate2D(latitude: latt, longitude: long)
+                vc.locationTitle = data.title
             }
         }
     }
